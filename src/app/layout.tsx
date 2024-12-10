@@ -16,6 +16,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Heso Doks | Shop",
   description: "Una tienda virtual de productos de tazas de sublimación",
+  icons: {
+    icon: '/favicon.ico',
+},
 };
 
 export default function RootLayout({
