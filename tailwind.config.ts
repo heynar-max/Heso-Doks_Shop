@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      screens: {
+        'custom-800': '800px',  // Aquí agregas el nuevo breakpoint personalizado
+      },
     },
   },
   plugins: [],
