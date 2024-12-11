@@ -3,13 +3,14 @@ export interface Product {
     images: string[];
     inStock: number;
     price: number;
-    sizes: ValidSizes[];
+    sizes: Sizes[];
     slug: string;
     tags: string[];
     title: string;
-    type: ValidTypes;
-    gender: 'men'|'women'|'kid'|'unisex'|'dorado'|'plateado'
+    type: ValidType;
+    gender: Category;
 }
 
-export type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'11 onzas';
-export type ValidTypes = 'shirts'|'pants'|'hoodies'|'hats'|'tazas';
+export type Category = 'men'|'women'|'kid'|'unisex'|'dorado'|'plateado';
+export type Sizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'11 onzas';
+export type ValidType = 'shirts'|'pants'|'hoodies'|'hats'|'tazas';
