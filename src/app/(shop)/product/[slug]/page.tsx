@@ -1,3 +1,4 @@
+import { SizeSelector } from "@/components";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
 
@@ -36,6 +37,10 @@ export default function productSlugShopPage({params}: Props) {
                 </p>
 
                 {/* selector de tallas  */}
+                <SizeSelector
+                    selectedSize={product.sizes[0]}
+                    availablesizes={product.sizes}
+                />
 
                 {/* selector de cantidad  */}
 
