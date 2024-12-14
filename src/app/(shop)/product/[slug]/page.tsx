@@ -1,4 +1,4 @@
-import { QuantitySelector, SizeSelector } from "@/components";
+import { ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
 
@@ -24,7 +24,10 @@ export default function productSlugShopPage({params}: Props) {
 
             {/* slideshow  */}
             <div className="col-span-1 md:col-span-2" >
-                hola
+                <ProductSlideshow
+                    title={ product.title}
+                    images={product.images}
+                />
             </div>
 
             {/* detalles  */}
