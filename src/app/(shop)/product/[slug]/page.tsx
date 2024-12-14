@@ -1,4 +1,4 @@
-import { ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
+import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
 import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
 
@@ -20,13 +20,23 @@ export default function productSlugShopPage({params}: Props) {
     }
 
     return (
-        <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3 ">
 
             {/* slideshow  */}
             <div className="col-span-1 md:col-span-2" >
+
+                {/* mobile slideshow  */}
+                <ProductMobileSlideshow
+                    title={ product.title}
+                    images={product.images}
+                    className="block md:hidden"
+                />
+
+                {/* desktop slideshow  */}
                 <ProductSlideshow
                     title={ product.title}
                     images={product.images}
+                    className="hidden md:block"
                 />
             </div>
 
