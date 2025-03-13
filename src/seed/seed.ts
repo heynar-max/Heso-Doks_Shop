@@ -11,7 +11,7 @@ interface SeedProduct {
     gender: 'men'|'women'|'kid'|'unisex'|'dorado'|'plateado'
 }
 
-type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'11 onzas';
+type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'MUG';
 type ValidTypes = 'shirts'|'pants'|'hoodies'|'hats'|'tazas';
 
 interface SeedData {
@@ -24,14 +24,14 @@ interface SeedData {
 export const initialData: SeedData = {
     products: [
         {
-            description: "Taza dorada sublimada con el caballero dorado de Aries , de 11 onzas con efecto metalizado espejo",
+            description: "Taza dorada sublimada con el caballero dorado de Aries , de MUG con efecto metalizado espejo",
             images: [
                 'Aries.jpg',
                 'Aries1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_dorada_aries",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -39,14 +39,14 @@ export const initialData: SeedData = {
             gender: 'dorado'
         },
         {
-            description: "Taza dorada sublimada con el caballero dorado de Cancer , de 11 onzas con efecto metalizado espejo",
+            description: "Taza dorada sublimada con el caballero dorado de Cancer , de MUG con efecto metalizado espejo",
             images: [
                 'Cancer.jpg',
                 'Cancer1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_dorada_cancer",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -54,14 +54,14 @@ export const initialData: SeedData = {
             gender: 'dorado'
         },
         {
-            description: "Taza plateada sublimada con el caballero de bronce del Cisne , de 11 onzas con efecto metalizado espejo",
+            description: "Taza plateada sublimada con el caballero de bronce del Cisne , de MUG con efecto metalizado espejo",
             images: [
                 'Cisne.jpg',
                 'Cisne1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_plateada_cisne",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -69,14 +69,14 @@ export const initialData: SeedData = {
             gender: 'plateado'
         },
         {
-            description: "Taza plateada sublimada con el caballero de bronce del Fenix , de 11 onzas con efecto metalizado espejo",
+            description: "Taza plateada sublimada con el caballero de bronce del Fenix , de MUG con efecto metalizado espejo",
             images: [
                 'Fenix.jpg',
                 'Fenix1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_plateada_fenix",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -84,14 +84,14 @@ export const initialData: SeedData = {
             gender: 'plateado'
         },
         {
-            description: "Taza dorada sublimada con el caballero dorado de Geminis , de 11 onzas con efecto metalizado espejo",
+            description: "Taza dorada sublimada con el caballero dorado de Geminis , de MUG con efecto metalizado espejo",
             images: [
                 'Geminis.jpg',
                 'Geminis1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_dorada_geminis",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -99,14 +99,14 @@ export const initialData: SeedData = {
             gender: 'dorado'
         },
         {
-            description: "Taza dorada sublimada con el caballero dorado de Piscis , de 11 onzas con efecto metalizado espejo",
+            description: "Taza dorada sublimada con el caballero dorado de Piscis , de MUG con efecto metalizado espejo",
             images: [
                 'Piscis.jpg',
                 'Piscis1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_dorada_piscis",
             type: 'tazas',
             tags: ['sublimacion'],
@@ -114,14 +114,14 @@ export const initialData: SeedData = {
             gender: 'dorado'
         },
         {
-            description: "Taza dorada sublimada con el caballero dorado de Tauro , de 11 onzas con efecto metalizado espejo",
+            description: "Taza dorada sublimada con el caballero dorado de Tauro , de MUG con efecto metalizado espejo",
             images: [
                 'Tauro.jpg',
                 'Tauro1.jpg',
             ],
             inStock: 7,
             price: 75,
-            sizes: ['11 onzas'],
+            sizes: ['MUG'],
             slug: "taza_dorada_tauro",
             type: 'tazas',
             tags: ['sublimacion'],
