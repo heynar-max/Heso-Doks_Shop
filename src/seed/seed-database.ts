@@ -13,7 +13,7 @@ async function main() {
 
      //  Categorias
 
-    const { categories } = initialData;
+    const { categories, products } = initialData;
     
     const categoriesData = categories.map( (name) => ({ name }));
 
@@ -29,6 +29,25 @@ async function main() {
         return map;
     }, {} as Record<string, string>); //<string=shirt, string=categoryID>
     console.log(categoriesMap)
+
+    // Productos
+
+
+    products.forEach( async(product) => {
+
+        const { type, images, ...rest } = product;
+
+        const dbProduct = await prisma.product.create({
+        data: {
+            ...rest,
+            categoryId: categoriesMap[type]
+        }
+        })
+
+
+
+    });
+
 
     console.log('Seed Ejecutado');
 }
