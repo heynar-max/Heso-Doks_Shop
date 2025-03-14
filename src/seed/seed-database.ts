@@ -11,6 +11,17 @@ async function main() {
         prisma.category.deleteMany(),
     ]);
 
+     //  Categorias
+
+    const { categories } = initialData;
+    
+    const categoriesData = categories.map( (name) => ({ name }));
+
+    await prisma.category.createMany({
+        data: categoriesData
+    });
+
+
     console.log('Seed Ejecutado');
 }
 

@@ -15,13 +15,18 @@ type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'MUG';
 type ValidTypes = 'shirts'|'pants'|'hoodies'|'hats'|'tazas';
 
 interface SeedData {
-    products: SeedProduct[],
+    categories: string[];
+    products: SeedProduct[];
 }
 
 
 
 
 export const initialData: SeedData = {
+
+    categories: [
+        'Shirts','Pants','Hoodies','Hats','Tazas',
+    ],
     products: [
         {
             description: "Taza dorada sublimada con el caballero dorado de Aries , de MUG con efecto metalizado espejo",
