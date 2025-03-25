@@ -14,6 +14,7 @@ interface SeedProduct {
 type ValidSizes = 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL'|'MUG';
 type ValidTypes = 'shirts'|'pants'|'hoodies'|'hats'|'tazas';
 
+
 interface SeedData {
     categories: string[];
     products: SeedProduct[];
