@@ -1,5 +1,7 @@
+export const revalidate = 604800; //7 dias 
+
+import { getProductBySlug } from "@/actions";
 import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector } from "@/components";
-import { initialData } from "@/seed/seed";
 import { notFound } from "next/navigation";
 
 
@@ -10,10 +12,12 @@ import { notFound } from "next/navigation";
     }
 
 
-export default function productSlugShopPage({params}: Props) {
+export default async function productSlugShopPage({params}: Props) {
 
     const { slug } = params;
-    const product = initialData.products.find( product => product.slug === slug);
+    const product = await getProductBySlug(slug);
+
+    console.log(product);
 
     if ( !product ) {
         notFound();
