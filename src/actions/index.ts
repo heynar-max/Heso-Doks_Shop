@@ -1,5 +1,5 @@
 
 
-export * from './product/product-pagination'
-export * from './product/et-product-by-slug'
-export * from './product/get-stock-by-slug'
+export { getPaginatedProductsWithImages } from './product/product-pagination'
+export { getStockBySlug } from './product/get-stock-by-slug'
+export { getProductBySlug } from './product/et-product-by-slug'

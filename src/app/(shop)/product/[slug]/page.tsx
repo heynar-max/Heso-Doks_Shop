@@ -1,9 +1,10 @@
 export const revalidate = 604800; //7 dias 
 
 import { getProductBySlug } from "@/actions";
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
+import { ProductMobileSlideshow, ProductSlideshow,  StockLabel } from "@/components";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import { AddToCart } from "./ui/AddToCart";
 
 
     interface Props {
@@ -83,21 +84,7 @@ export default async function productSlugShopPage({params}: Props) {
                     $ {product.price}
                 </p>
 
-                {/* selector de tallas  */}
-                <SizeSelector
-                    selectedSize={product.sizes[0]}
-                    availablesizes={product.sizes}
-                />
-
-                {/* selector de cantidad  */}
-                <QuantitySelector
-                    quantity={1}
-                />
-
-                {/* boton  */}
-                <button className="btn-primary my-5">
-                    agregar al carrito
-                </button>
+                <AddToCart product={product}/>
 
                 {/* descripcion  */}
                 <h3 className="font-bold text-sm">
