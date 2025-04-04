@@ -23,6 +23,7 @@ interface Props {
 
         if (!size) return;
 
+        console.log({ size, quantity, product})
     };
 
 
