@@ -1,13 +1,9 @@
 
 import { useCartStore } from "@/store";
-import { useMemo } from "react";
+
 
 export const useCartSummary = () => {
-    const cart = useCartStore((state) => state.cart);
+  useCartStore((state) => state.cart); // Para suscribirte
 
-    const summary = useMemo(() => {
-        return useCartStore.getState().getSummaryInformation();
-    }, [cart]);
-
-    return summary;
+  return useCartStore.getState().getSummaryInformation(); // Resultado directo
 };
