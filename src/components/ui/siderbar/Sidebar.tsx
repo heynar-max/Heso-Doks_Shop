@@ -14,7 +14,7 @@ export const Sidebar = () => {
     const closeMenu = useUIStore( state => state.closeSideMenu );
 
     const { data: session } = useSession();
-    console.log({session})
+    const isAuthenticated = !!session?.user;
 
     return (
         <div>
@@ -80,23 +80,34 @@ export const Sidebar = () => {
                     <IoTicketOutline size={ 20 } />
                     <span className="ml-3 text-xl">Ordenes</span>
                     </Link>
-                    <Link
-                    href="/auth/login"
-                    className="flex items-center mt-5 p-1 hover:bg-gray-100 rounded transition-all"
-                    >
-                    <IoLogInOutline size={ 20 } />
-                    <span className="ml-3 text-xl">Ingresar</span>
-                    </Link>
-                    <button
-                    className="flex w-full items-center mt-5 p-1 hover:bg-gray-100 rounded transition-all"
-                    onClick={() => {
-                        logout();
-                        closeMenu();
-                    }}
-                    >
-                    <IoLogOutOutline size={ 20 } />
-                    <span className="ml-3 text-xl">Salir</span>
-                    </button>
+
+                    {
+                        isAuthenticated && (
+                            <button
+                                className="flex w-full items-center mt-5 p-1 hover:bg-gray-100 rounded transition-all"
+                                onClick={() => {
+                                    logout();
+                                    closeMenu();
+                                }}
+                                >
+                                <IoLogOutOutline size={ 20 } />
+                                <span className="ml-3 text-xl">Salir</span>
+                            </button>
+                        )
+                    }
+                    {
+                        !isAuthenticated && (
+                            <Link
+                                href="/auth/login"
+                                className="flex items-center mt-5 p-1 hover:bg-gray-100 rounded transition-all"
+                                onClick={ () => closeMenu() }
+                                >
+                                <IoLogInOutline size={ 20 } />
+                                <span className="ml-3 text-xl">Ingresar</span>
+                            </Link>
+                        )
+                    }
+                    
                     {/* Line Separator */ }
                     <div className="w-full h-px bg-gray-200 my-10" />
                     <Link
