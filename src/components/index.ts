@@ -16,3 +16,5 @@ export * from './ui/siderbar/Sidebar'
 export * from './ui/pagination/Pagination'
 
 export * from './ui/pagination/Pagination'
+
+export * from './provider/Provider'
