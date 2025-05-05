@@ -12,15 +12,11 @@ import clsx from 'clsx';
 export const LoginForm = () => {
 
 
-    // const router = useRouter();
+
     const [state, dispatch] = useFormState(authenticate, undefined);
-    
-    console.log(state);
 
     useEffect(() => {
         if ( state === 'Success' ) {
-        // redireccionar
-        // router.replace('/');
         window.location.replace('/');
         }
 
