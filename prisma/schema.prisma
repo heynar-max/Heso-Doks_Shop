@@ -81,3 +81,12 @@ model User {
   role          Role      @default(user)
   image         String?
 }
+
+model Country{
+  id String @id
+  name String
+}
+
+
+// migrar a prima
+// npx prisma migrate dev -n country
