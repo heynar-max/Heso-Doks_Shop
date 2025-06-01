@@ -6,14 +6,16 @@ import { useCartSummary } from "@/hooks/useCartSummary";
 import { currencyFormat } from "@/utils";
 import clsx from "clsx";
 import { placeOrder } from "@/actions";
+import { useRouter } from "next/navigation";
 
 
 
 
 export const PlaceOrder = () => {
 
-
+    const router = useRouter();
     const [loaded, setLoaded] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
 
@@ -22,6 +24,7 @@ export const PlaceOrder = () => {
     const { subTotal, tax, total, itemsInCart } = useCartSummary()
     
     const cart = useCartStore( state => state.cart );
+    const clearCart = useCartStore( state => state.clearCart );
 
     useEffect(() => {
         setLoaded(true);
@@ -37,13 +40,19 @@ export const PlaceOrder = () => {
             size: product.size,
             }))
 
-        console.log({address, productsToOrder})
+        //! Server Action
+        const resp = await placeOrder( productsToOrder, address);
+            if ( !resp.ok ) {
+            setIsPlacingOrder(false);
+            setErrorMessage(resp.message ?? 'Ocurrió un error inesperado');
+            return;
+        }
 
-        const resp = await placeOrder ( productsToOrder, address);
-        console.log({ resp })
+        //* Todo salio bien!
+            clearCart();
+            router.replace('/orders/' + resp.order?.id );
 
-        setIsPlacingOrder(false);
-    }
+        }
 
 
 
@@ -103,7 +112,7 @@ export const PlaceOrder = () => {
             </p>
 
 
-            
+            <p className="text-red-500">{ errorMessage }</p>
 
             <button
                 // href="/orders/123"

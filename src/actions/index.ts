@@ -10,6 +10,7 @@ export * from './address/delete-user-address';
 export * from './address/get-user-address';
 
 export * from './order/place-order';
+export * from './order/get-order-by-id';
 
 export { getPaginatedProductsWithImages } from './product/product-pagination'
 export { getStockBySlug } from './product/get-stock-by-slug'
