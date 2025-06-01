@@ -6,6 +6,11 @@ import { prisma } from '../lib/prisma';
 async function main() {
 
     // 1. Borrar registros previos
+
+        await prisma.orderAddress.deleteMany();
+        await prisma.orderItem.deleteMany();
+        await prisma.order.deleteMany();
+        // npx prisma generate 
         
         await prisma.user.deleteMany();
         await prisma.country.deleteMany();
