@@ -54,6 +54,7 @@ export const placeOrder = async (productIds: ProductToOrder[],address: Address) 
     },
     { subTotal: 0, tax: 0, total: 0 }
 );
+console.log(subTotal, tax, total)
 
   // Crear la transacción de base de datos
 
@@ -79,22 +80,31 @@ export const placeOrder = async (productIds: ProductToOrder[],address: Address) 
                     size: p.size,
                     productId: p.productId,
                     price:
-                    products.find((product) => product.id === p.productId)?.price ?? 0,
+                    products.find((product) => product.id === p.productId)
+                        ?.price ?? 0,
                 })),
                 },
             },
             },
         });
 
-        // Validar, si el price es cero, entonces, lanzar un error
-        
+      // Validar, si el price es cero, entonces, lanzar un error
 
       // 3. Crear la direccion de la orden
+      // Address
+        const { country, ...restAddress } = address;
+        const orderAddress = await tx.orderAddress.create({
+            data: {
+            ...restAddress,
+            countryId: country,
+            orderId: order.id,
+            },
+        });
 
-    return {
-            orden: order,
+        return {
             updatedProducts: [],
-            orderAddress: {}
+            orden: order,
+            orderAddress: orderAddress
         }
     });
 
