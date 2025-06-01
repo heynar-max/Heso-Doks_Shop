@@ -5,6 +5,7 @@ import { useAddressStore, useCartStore} from "@/store";
 import { useCartSummary } from "@/hooks/useCartSummary";
 import { currencyFormat } from "@/utils";
 import clsx from "clsx";
+import { placeOrder } from "@/actions";
 
 
 
@@ -37,6 +38,9 @@ export const PlaceOrder = () => {
             }))
 
         console.log({address, productsToOrder})
+
+        const resp = await placeOrder ( productsToOrder, address);
+        console.log({ resp })
 
         setIsPlacingOrder(false);
     }
