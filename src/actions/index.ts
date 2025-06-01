@@ -11,6 +11,7 @@ export * from './address/get-user-address';
 
 export * from './order/place-order';
 export * from './order/get-order-by-id';
+export * from './order/get-ordes-by-user';
 
 export { getPaginatedProductsWithImages } from './product/product-pagination'
 export { getStockBySlug } from './product/get-stock-by-slug'
