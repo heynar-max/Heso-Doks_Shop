@@ -1,5 +1,6 @@
 "use server";
 
+import { PayPalOrderStatusResponse } from "@/interfaces";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 

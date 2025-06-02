@@ -20,3 +20,5 @@ export * from './ui/pagination/Pagination'
 export * from './providers/Providers'
 
 export * from './paypal/PayPalButton'
+
+export * from './orders/OrderStatus'
