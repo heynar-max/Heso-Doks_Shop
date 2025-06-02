@@ -1,5 +1,6 @@
 'use client';
 
+import { setTransactionId } from '@/actions';
 import { CreateOrderData, CreateOrderActions, } from '@paypal/paypal-js';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 
@@ -36,6 +37,13 @@ export const PayPalButton = ({ orderId, amount }: Props) => {
                 },
             ],
         });
+
+        // guardar el ID en la base de datos 
+
+        const { ok } = await setTransactionId( orderId, transactionId );
+            if ( !ok ) {
+            throw new Error('No se pudo actualizar la orden');
+        }
 
         console.log({ transactionId });
         return transactionId;
