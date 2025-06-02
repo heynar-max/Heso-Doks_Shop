@@ -143,6 +143,10 @@ model Order {
 
   OrderItem    OrderItem[]
   OrderAddress OrderAddress?
+
+  transactionId String?
+  // migrar a prima
+  // npx prisma migrate dev -n transaction-id
 }
 
 model OrderItem {
