@@ -20,4 +20,7 @@ pnpm dev
 bun dev
 ```
 
+paypal la configuracion
+
+
 ## Correr em produción
