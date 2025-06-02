@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 
 
@@ -27,7 +28,7 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
     }
 
     const { status, purchase_units } = resp;
-    // const { invoice_id: orderId } = purchase_units[0]; 
+    const { invoice_id: orderId } = purchase_units[0]; 
     
     if ( status !== 'COMPLETED' ) {
         return {
