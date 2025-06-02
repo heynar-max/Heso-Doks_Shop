@@ -22,5 +22,6 @@ bun dev
 
 paypal la configuracion
 
-
+instalar 
+npm i @paypal/react-paypal-js
 ## Correr em produción
