@@ -1,5 +1,7 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
+
 
 
 export const paypalCheckPayment = async (paypalTransactionId: string) => {
@@ -25,14 +27,41 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
     }
 
     const { status, purchase_units } = resp;
-    console.log({status, purchase_units});
     // const { invoice_id: orderId } = purchase_units[0]; 
-    console.log({status, purchase_units})
-
+    
     if ( status !== 'COMPLETED' ) {
         return {
+            ok: false,
+            message: 'Aún no se ha pagado en PayPal'
+        }
+    }
+    
+    // TODO: Realizar la actualización en nuestra base de datos
+    try {
+        console.log({status, purchase_units})
+
+        await prisma.order.update({
+        where: { id: orderId },
+        data:  {
+            isPaid: true,
+            paidAt: new Date()
+        }
+        })
+
+
+        // TODO: Revalidar un path
+        revalidatePath(`/orders/${ orderId }`);
+
+        return {
+        ok: true
+        }
+
+        
+    } catch (error) {
+        console.log(error);
+        return {
         ok: false,
-        message: 'Aún no se ha pagado en PayPal'
+        message: '500 - El pago no se pudo realizar'
         }
     }
 };
@@ -89,7 +118,10 @@ const verifyPayPalPayment = async (paypalTransactionId: string, bearerToken: str
     };
 
     try {
-        const resp = await fetch( paypalOrderUrl, requestOptions ).then ( r => r.json());
+        const resp = await fetch( paypalOrderUrl, {
+            ...requestOptions,
+            cache: 'no-store'
+        }  ).then ( r => r.json());
 
         return resp;
 
