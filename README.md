@@ -24,4 +24,6 @@ paypal la configuracion
 
 instalar 
 npm i @paypal/react-paypal-js
+
+esta clase fue de postman
 ## Correr em produción
