@@ -18,6 +18,7 @@ export * from './order/get-ordes-by-user';
 export * from './order/get-paginated-orders';
 
 export * from './user/get-paginater-users';
+export * from './user/change-user-role';
 
 export { getPaginatedProductsWithImages } from './product/product-pagination'
 export { getStockBySlug } from './product/get-stock-by-slug'
