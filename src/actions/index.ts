@@ -17,6 +17,8 @@ export * from './order/get-order-by-id';
 export * from './order/get-ordes-by-user';
 export * from './order/get-paginated-orders';
 
+export * from './user/get-paginater-users';
+
 export { getPaginatedProductsWithImages } from './product/product-pagination'
 export { getStockBySlug } from './product/get-stock-by-slug'
 export { getProductBySlug } from './product/et-product-by-slug'

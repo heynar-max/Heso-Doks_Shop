@@ -7,3 +7,5 @@ export * from './address.interfaces'
 
 export * from './paypal.interfaces'
 
+export * from './user.interface'
+
