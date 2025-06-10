@@ -9,3 +9,5 @@ export * from './paypal.interfaces'
 
 export * from './user.interface'
 
+export * from './category.interface'
+

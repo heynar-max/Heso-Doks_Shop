@@ -5,6 +5,8 @@ export * from './auth/register';
 
 export * from './country/get-countries';
 
+export * from './category/get-category';
+
 export * from './payments/set-transaction-id';
 export * from './payments/paypal-check-payment';
 
