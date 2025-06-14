@@ -27,10 +27,10 @@ const productSchema = z.object({
 export const createUpdateProduct = async( formData: FormData ) => {
 
     const data = Object.fromEntries( formData );
-    const productParsed = productSchema.safeParse( data)
+    const productParsed = productSchema.safeParse( data);
 
     if ( !productParsed.success) {
-        console.log ( productParsed.error);
+        console.log( productParsed.error);
         return { ok: false }
     }
 
@@ -58,14 +58,28 @@ export const createUpdateProduct = async( formData: FormData ) => {
                     }
                 }
                 });
-                console.log({ updatedProduct: product})
+                
         } else {
         // Crear
-        
+            product = await prisma.product.create({
+                data: {
+                    ...rest,
+                    sizes: {
+                    set: rest.sizes as Size[],
+                    },
+                    tags: {
+                    set: tagsArray
+                    }
+                }
+        })
+        }
+        console.log({ updatedProduct: product})
+        return {
+            product
         }
     })
 
 return{
-    product
+    ok: true,
 }
 }
