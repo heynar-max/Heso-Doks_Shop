@@ -21,7 +21,9 @@ export * from './order/get-paginated-orders';
 
 export * from './user/get-paginater-users';
 export * from './user/change-user-role';
+export * from './user/change-user-role';
 
 export { getPaginatedProductsWithImages } from './product/product-pagination'
 export { getStockBySlug } from './product/get-stock-by-slug'
 export { getProductBySlug } from './product/et-product-by-slug'
+export * from './product/create-update-product';
