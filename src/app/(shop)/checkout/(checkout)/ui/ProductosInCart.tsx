@@ -12,7 +12,7 @@ const ProductosInCart = () => {
 
     useEffect(() => {
         setLoaded(true);
-    });
+    },[]);
 
     if( !loaded) {
         return <p>Loading....</p>

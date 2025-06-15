@@ -34,7 +34,8 @@ export const changeUserRole = async( userId: string, role: string ) => {
         revalidatePath('/admin/users');
 
         return {
-        ok: true
+        ok: true,
+        user,
         }
         
     } catch (error) {

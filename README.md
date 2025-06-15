@@ -31,3 +31,6 @@ esta clase fue de postman
 instalar Cloudinary
 npm i cloudinary
 .env
+
+se hace el build para ver errores
+npm run build 

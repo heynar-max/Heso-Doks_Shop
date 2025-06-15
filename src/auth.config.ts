@@ -13,17 +13,8 @@ export const authConfig:NextAuthConfig = {
 
     callbacks: {
     
-        authorized({ auth, request: { nextUrl } }) {
+        authorized({ auth }) {
             console.log({ auth });
-            // const isLoggedIn = !!auth?.user;
-
-            // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-            // if (isOnDashboard) {
-            //   if (isLoggedIn) return true;
-            //   return false; // Redirect unauthenticated users to login page
-            // } else if (isLoggedIn) {
-            //   return Response.redirect(new URL('/dashboard', nextUrl));
-            // }
             return true;
 
         },
@@ -35,8 +26,10 @@ export const authConfig:NextAuthConfig = {
             return token;
         },
     
-        session({ session, token, user }) {
-            session.user = token.data as any;
+        session({ session, token}) {
+            if (token?.data) {
+            session.user = token.data as typeof session.user; // 👈 Type assertion aquí
+            }
             return session;
         },
     
@@ -62,6 +55,8 @@ export const authConfig:NextAuthConfig = {
                     if( !bcryptjs.compareSync( password, user.password ) ) return null;
 
                     // Regresar el usuario sin el password
+                    
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
                     const { password: _, ...rest } = user;
 
                     return rest;

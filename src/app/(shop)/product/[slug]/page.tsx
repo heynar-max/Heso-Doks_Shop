@@ -2,7 +2,7 @@ export const revalidate = 604800; //7 dias
 
 import { getProductBySlug } from "@/actions";
 import { ProductMobileSlideshow, ProductSlideshow,  StockLabel } from "@/components";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AddToCart } from "./ui/AddToCart";
 
@@ -15,7 +15,6 @@ import { AddToCart } from "./ui/AddToCart";
 
 export async function generateMetadata(
     { params }: Props,
-    parent: ResolvingMetadata
     ): Promise<Metadata> {
     // read route params
     const slug = params.slug;

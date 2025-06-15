@@ -157,7 +157,7 @@ export const ProductForm = ({ product, categories }: Props) => {
             </select>
             </div>
 
-            <button className="btn-primary w-full">
+            <button className="btn-primary w-full" disabled={!isValid}>
             Guardar
             </button>
         </div>

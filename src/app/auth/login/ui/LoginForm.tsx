@@ -1,66 +1,72 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useState } from 'react';
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
-
+import { useRouter } from "next/navigation";
 import { authenticate } from "@/actions";
 import { IoInformationOutline } from "react-icons/io5";
 import clsx from 'clsx';
 
-
 export const LoginForm = () => {
+    const [error, setError] = useState('');
+    const [pending, setPending] = useState(false);
+    const router = useRouter();
 
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        setPending(true);
+        setError('');
 
+        const formData = new FormData(event.currentTarget);
+        const result = await authenticate(undefined, formData);
 
-    const [state, dispatch] = useFormState(authenticate, undefined);
-
-    useEffect(() => {
-        if ( state === 'Success' ) {
-        window.location.replace('/');
+        if (result === 'Success') {
+        router.replace('/');
+        } else if (result === 'CredentialsSignin') {
+        setError('Credenciales no son correctas');
+        } else {
+        setError('Ocurrió un error. Intenta de nuevo.');
         }
 
-    },[state]);
-
-
+        setPending(false);
+    };
 
     return (
-        <form action={dispatch} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col">
         <label htmlFor="email">Correo electrónico</label>
         <input
             className="px-5 py-2 border bg-gray-200 rounded mb-5"
             type="email"
             name="email"
+            required
         />
 
-        <label htmlFor="email">Contraseña</label>
+        <label htmlFor="password">Contraseña</label>
         <input
             className="px-5 py-2 border bg-gray-200 rounded mb-5"
             type="password"
             name="password"
+            required
         />
 
-        <div
-            className="flex h-8 items-end space-x-1"
-            aria-live="polite"
-            aria-atomic="true"
-        >
-            {state === "CredentialsSignin" && (
+        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
+            {error && (
             <div className="flex flex-row mb-2">
                 <IoInformationOutline className="h-5 w-5 text-red-500" />
-                <p className="text-sm text-red-500">
-                Credenciales no son correctas
-                </p>
+                <p className="text-sm text-red-500">{error}</p>
             </div>
             )}
         </div>
 
-            <LoginButton />
-        {/* <button type="submit" className="btn-primary">
-            Ingresar
-        </button> */}
+        <button
+            type="submit"
+            disabled={pending}
+            className={clsx("btn-primary", { "btn-disabled": pending })}
+        >
+            {pending ? 'Ingresando...' : 'Ingresar'}
+        </button>
 
-        {/* divisor l ine */}
+        {/* divisor */}
         <div className="flex items-center my-5">
             <div className="flex-1 border-t border-gray-500"></div>
             <div className="px-2 text-gray-800">O</div>
@@ -72,21 +78,4 @@ export const LoginForm = () => {
         </Link>
         </form>
     );
-    };
-
-    function LoginButton() {
-    const { pending } = useFormStatus();
-
-    return (
-        <button 
-        type="submit" 
-        className={ clsx({
-            "btn-primary": !pending,
-            "btn-disabled": pending
-        })}
-        disabled={ pending }
-        >
-        Ingresar
-        </button>
-    );
-}
+};
