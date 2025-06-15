@@ -34,3 +34,11 @@ npm i cloudinary
 
 se hace el build para ver errores
 npm run build 
+
+modificamos .env
+
+terminal 
+npx prisma migrate deploy
+
+npm run seed
+para subir la base de datos
