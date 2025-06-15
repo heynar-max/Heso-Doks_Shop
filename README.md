@@ -27,3 +27,7 @@ npm i @paypal/react-paypal-js
 
 esta clase fue de postman
 ## Correr em produción
+
+instalar Cloudinary
+npm i cloudinary
+.env
