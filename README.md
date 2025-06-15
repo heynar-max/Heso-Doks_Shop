@@ -42,3 +42,6 @@ npx prisma migrate deploy
 
 npm run seed
 para subir la base de datos
+
+
+npm run build
